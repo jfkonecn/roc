@@ -1,4 +1,4 @@
-app [main] { pf: platform "https://github.com/lukewilliamboswell/basic-ssg/releases/download/0.1.0/EMH2OFwcXCUEzbwP6gyfeRQu7Phr-slc-vE8FPPreys.tar.br" }
+app [main] { pf: platform "https://github.com/lukewilliamboswell/basic-ssg/releases/download/0.3.0/j6o4Y3lzxUr3uBVi-1yI01fjGxcmzcY-CYQvfOeTmMs.tar.br" }
 
 import pf.Task exposing [Task]
 import pf.SSG
