@@ -438,10 +438,25 @@ fn render_sidebar<'a, I: Iterator<Item = &'a ModuleDocumentation>>(modules: I) -
                         entry_href.push('#');
                         entry_href.push_str(doc_def.name.as_str());
 
+                        let mut entry_signature = String::new();
+                        type_annotation_to_html(
+                            0,
+                            &mut entry_signature,
+                            &doc_def.type_annotation,
+                            false,
+                        );
+                        let entry_signature: String = entry_signature
+                            .chars()
+                            .filter(|c| !c.is_whitespace())
+                            .collect();
+
                         push_html(
                             &mut entries_buf,
                             "a",
-                            vec![("href", entry_href.as_str())],
+                            vec![
+                                ("href", entry_href.as_str()),
+                                ("signature", entry_signature.as_str()),
+                            ],
                             doc_def.name.as_str(),
                         );
                     }

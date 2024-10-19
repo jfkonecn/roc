@@ -31,11 +31,21 @@
                         );
                 });
             } else {
+                const textWithoutWhitespace = text.replace(/\s+/g, '');
                 // First, show/hide all the sub-entries within each module (top-level functions etc.)
                 sidebar
                     .querySelectorAll(".sidebar-sub-entries a")
                     .forEach((entry) => {
-                        if (entry.textContent.toLowerCase().includes(text)) {
+                        const signatureText = entry.getAttribute("signature");
+                        let entryText;
+                        if (signatureText !== "") {
+                            entryText = `${entry.textContent}:${entry.getAttribute("signature")}`
+                        } else {
+                            entryText = entry.textContent
+                        }
+                        entryText = entryText.toLowerCase().replace(/\s+/g, '');
+
+                        if (entryText.includes(textWithoutWhitespace)) {
                             entry.classList.remove("hidden");
                         } else {
                             entry.classList.add("hidden");
